@@ -1,9 +1,5 @@
-// Web Scraper Homework Solution Example
-// (be sure to watch the video to see
-// how to operate the site in the browser)
-// -/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
 
-// Require our dependencies
+//  dependencies
 var express = require("express");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
@@ -12,23 +8,23 @@ var request = require("request");
 var cheerio = require('cheerio');
 
 
-// Set up our port to be either the host's designated port, or 3000
+// Port set up 
 var PORT = process.env.PORT || 3000;
 
-// Instantiate our Express App
+// Instantiate Express App
 var app = express();
 
-// Require our routes
+// Require routes
 var routes = require("./routes");
 
-// Designate our public folder as a static directory
+// Designate public folder as a static directory
 app.use(express.static("public"));
 
-// Connect Handlebars to our Express app
+// Connect Handlebars to Express app
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// Use bodyParser in our app
+// Use bodyParser in app
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 

@@ -7,7 +7,7 @@ $(document).ready(function() {
   $(document).on("click", ".btn.save", handleArticleSave);
   $(document).on("click", ".scrape-new", handleArticleScrape);
 
-  // Once the page is ready, run the initPage function to kick things off
+  // Once the page is ready, run the initPage function
   initPage();
 
   function initPage() {
@@ -27,15 +27,15 @@ $(document).ready(function() {
 
   function renderArticles(articles) {
     // This function handles appending HTML containing our article data to the page
-    // We are passed an array of JSON containing all available articles in our database
+    // pass an array of JSON containing all available articles into database
     var articlePanels = [];
-    // We pass each article JSON object to the createPanel function which returns a bootstrap
-    // panel with our article data inside
+    // Pass each article JSON object to the createPanel function which returns a bootstrap
+    // panel with article data inside
     for (var i = 0; i < articles.length; i++) {
       articlePanels.push(createPanel(articles[i]));
     }
-    // Once we have all of the HTML for the articles stored in our articlePanels array,
-    // append them to the articlePanels container
+    // HTML for the articles stored in our articlePanels array,
+    // append to the articlePanels container
     articleContainer.append(articlePanels);
   }
 
@@ -62,8 +62,8 @@ $(document).ready(function() {
         "</div>"
       ].join("")
     );
-    // We attach the article's id to the jQuery element
-    // We will use this when trying to figure out which article the user wants to save
+    // attach the article's id to the jQuery element
+    // use when trying to figure out which article the user wants to save
     panel.data("_id", article._id);
     // We return the constructed panel jQuery element
     return panel;
@@ -94,8 +94,8 @@ $(document).ready(function() {
 
   function handleArticleSave() {
     // This function is triggered when the user wants to save an article
-    // When we rendered the article initially, we attached a javascript object containing the headline id
-    // to the element using the .data method. Here we retrieve that.
+    // When article was rendered initially, it attached a javascript object containing the headline id
+    // to the element using the .data method. Here it retrieves that.
     var articleToSave = $(this)
       .parents(".panel")
       .data();
@@ -117,7 +117,7 @@ $(document).ready(function() {
   function handleArticleScrape() {
     // This function handles the user clicking any "scrape new article" buttons
     $.get("/api/fetch").then(function(data) {
-      // If we are able to successfully scrape the NYTIMES and compare the articles to those
+      // If user is able to successfully scrape the TMZ and compare the articles to those
       // already in our collection, re render the articles on the page
       // and let the user know how many unique articles we were able to save
       initPage();

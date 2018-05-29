@@ -5,7 +5,7 @@ var scrape = require("../scripts/scrape");
 
 module.exports = {
   scrapeHeadlines: function(req, res) {
-    // scrape the NYT
+    // scrape TMZ
     return scrape()
       .then(function(articles) {
         // then insert articles into the db

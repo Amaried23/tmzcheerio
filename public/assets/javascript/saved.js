@@ -1,6 +1,6 @@
 /* global bootbox */
 $(document).ready(function() {
-  // Getting a reference to the article container div we will be rendering all articles inside of
+  // Getting a reference to the article container div it will be rendering all articles inside of
   var articleContainer = $(".article-container");
   // Adding event listeners for dynamically generated buttons for deleting articles,
   // pulling up article notes, saving article notes, and deleting article notes
@@ -29,14 +29,14 @@ $(document).ready(function() {
 
   function renderArticles(articles) {
     // This function handles appending HTML containing our article data to the page
-    // We are passed an array of JSON containing all available articles in our database
+    // pass an array of JSON containing all available articles in our database
     var articlePanels = [];
-    // We pass each article JSON object to the createPanel function which returns a bootstrap
+    // pass each article JSON object to the createPanel function which returns a bootstrap
     // panel with our article data inside
     for (var i = 0; i < articles.length; i++) {
       articlePanels.push(createPanel(articles[i]));
     }
-    // Once we have all of the HTML for the articles stored in our articlePanels array,
+    //  HTML for the articles are stored in our articlePanels array,
     // append them to the articlePanels container
     articleContainer.append(articlePanels);
   }
@@ -129,7 +129,7 @@ $(document).ready(function() {
 
   function handleArticleDelete() {
     // This function handles deleting articles/headlines
-    // We grab the id of the article to delete from the panel element the delete button sits inside
+    // grab the id of the article to delete from the panel element the delete button sits inside
     var articleToDelete = $(this).parents(".panel").data();
     // Using a delete method here just to be semantic since we are deleting an article/headline
     $.ajax({
@@ -204,7 +204,7 @@ $(document).ready(function() {
     // First we grab the id of the note we want to delete
     // We stored this data on the delete button when we created it
     var noteToDelete = $(this).data("_id");
-    // Perform an DELETE request to "/api/notes/" with the id of the note we're deleting as a parameter
+    // Perform an DELETE request to "/api/notes/" with the id of the note thats being deleted as a parameter
     $.ajax({
       url: "/api/notes/" + noteToDelete,
       method: "DELETE"
